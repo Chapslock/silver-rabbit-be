@@ -1,6 +1,6 @@
-package com.chapslock.silverrabbitbe.adapter.web.professioncategory;
+package com.chapslock.silver.rabbit.adapter.web.professioncategory;
 
-import com.chapslock.silverrabbitbe.core.professioncategory.FindProfessionCategories;
+import com.chapslock.silver.rabbit.core.professioncategory.FindProfessionCategories;
 import lombok.Builder;
 import lombok.Value;
 

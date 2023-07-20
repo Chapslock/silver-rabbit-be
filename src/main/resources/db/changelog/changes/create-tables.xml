@@ -4,11 +4,25 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="0" author="charl.kivioja">
-        <createTable tableName="PROFESSION_CATEGORY">
-            <column name="id" type="int"/>
-            <column name="name" type="varchar(255)"/>
-            <column name="parent_id" type="int"/>
-        </createTable>
+    <changeSet id="create-table-profession-category" author="charl.kivioja">
+        <sql>
+            create table PROFESSION_CATEGORY
+            (
+                id        BIGINT PRIMARY KEY,
+                name      VARCHAR(255),
+                parent_id BIGINT
+            );
+        </sql>
+    </changeSet>
+    <changeSet id="create-table-person" author="charl.kivioja">
+        <sql>
+            create table PERSON
+            (
+                id                     UUID PRIMARY KEY,
+                name                   VARCHAR(255),
+                profession_category_id BIGINT,
+                has_agreed_to_terms    BOOLEAN
+            );
+        </sql>
     </changeSet>
 </databaseChangeLog>

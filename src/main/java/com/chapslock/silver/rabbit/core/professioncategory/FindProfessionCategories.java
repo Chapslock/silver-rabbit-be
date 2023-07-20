@@ -1,4 +1,4 @@
-package com.chapslock.silverrabbitbe.core.professioncategory;
+package com.chapslock.silver.rabbit.core.professioncategory;
 
 import lombok.Value;
 

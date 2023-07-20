@@ -1,4 +1,4 @@
-package com.chapslock.silverrabbitbe;
+package com.chapslock.silver.rabbit;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

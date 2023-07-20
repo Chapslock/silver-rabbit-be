@@ -1,6 +1,6 @@
-package com.chapslock.silverrabbitbe.adapter.database.professioncategory;
+package com.chapslock.silver.rabbit.adapter.database.professioncategory;
 
-import com.chapslock.silverrabbitbe.core.professioncategory.FindProfessionCategories;
+import com.chapslock.silver.rabbit.core.professioncategory.FindProfessionCategories;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -21,8 +21,7 @@ public class ProfessionCategoryRepositoryAdapter implements
                 .map(entity -> FindProfessionCategories.ProfessionCategory.of(
                         entity.getId(),
                         entity.getName(),
-                        entity.getParentId()
-                ))
+                        entity.getParentId()))
                 .collect(Collectors.toUnmodifiableSet());
     }
 }

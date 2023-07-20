@@ -1,6 +1,6 @@
-package com.chapslock.silverrabbitbe.adapter.web.professioncategory;
+package com.chapslock.silver.rabbit.adapter.web.professioncategory;
 
-import com.chapslock.silverrabbitbe.core.professioncategory.FindProfessionCategories;
+import com.chapslock.silver.rabbit.core.professioncategory.FindProfessionCategories;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +22,6 @@ public class ProfessionCategoryController {
                 .stream()
                 .map(ProfessionCategoryDto::of)
                 .collect(Collectors.toUnmodifiableSet());
-        //TODO: charl integration tests!
     }
 
 }
