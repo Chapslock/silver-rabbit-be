@@ -2,20 +2,16 @@ package com.chapslock.silver.rabbit.adapter.web.person;
 
 import com.chapslock.silver.rabbit.BaseIntegrationTest;
 import com.chapslock.silver.rabbit.adapter.database.person.PersonRepository;
-import com.chapslock.silver.rabbit.core.person.RegisterPerson;
 import com.chapslock.silver.rabbit.core.person.RegisterPerson.RegisterPersonErrorCode;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.jayway.jsonpath.JsonPath;
-import org.assertj.core.api.Assertions;
-import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 
 import java.util.UUID;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.hamcrest.Matchers.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
