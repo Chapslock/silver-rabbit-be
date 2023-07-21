@@ -1,6 +1,7 @@
 package com.chapslock.silver.rabbit.adapter.web.person;
 
 import com.chapslock.silver.rabbit.core.person.RegisterPerson;
+import com.chapslock.silver.rabbit.core.person.UpdateRegisteredPerson;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,7 +19,17 @@ public class PersonRegistrationResponseDto {
     Long professionCategoryId;
     Boolean hasAgreedToTerms;
 
-    static PersonRegistrationResponseDto of(RegisterPerson.Response response) {
+    static PersonRegistrationResponseDto ofRegisterPerson(RegisterPerson.Response response) {
+        return PersonRegistrationResponseDto
+                .builder()
+                .personId(response.getPersonId().getValue())
+                .name(response.getName())
+                .professionCategoryId(response.getProfessionCategoryId())
+                .hasAgreedToTerms(response.getHasAgreedToTerms())
+                .build();
+    }
+
+    static PersonRegistrationResponseDto ofUpdateRegisteredPerson(UpdateRegisteredPerson.Response response) {
         return PersonRegistrationResponseDto
                 .builder()
                 .personId(response.getPersonId().getValue())

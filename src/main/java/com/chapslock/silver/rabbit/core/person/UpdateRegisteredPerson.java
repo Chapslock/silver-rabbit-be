@@ -12,26 +12,26 @@ import java.util.Set;
 
 @Component
 @RequiredArgsConstructor
-public class RegisterPerson {
+public class UpdateRegisteredPerson {
 
-    private final SavePerson savePerson;
     private final PersonRegistrationValidation personRegistrationValidation;
+    private final UpdatePerson updatePerson;
 
     public Response execute(Request request) {
         validateRequest(request);
 
-        Person person = savePerson.execute(SavePerson.Request.of(Person
+        Person updatedPerson = updatePerson.execute(UpdatePerson.Request.of(Person
                 .builder()
+                .id(request.getPersonId())
                 .name(request.getName())
                 .professionCategoryId(request.getProfessionCategoryId())
                 .hasAgreedToTerms(request.getHasAgreedToTerms())
                 .build()));
-        return Response
-                .builder()
-                .personId(person.getId())
-                .name(person.getName())
-                .professionCategoryId(person.getProfessionCategoryId())
-                .hasAgreedToTerms(person.getHasAgreedToTerms())
+        return Response.builder()
+                .personId(updatedPerson.getId())
+                .name(updatedPerson.getName())
+                .professionCategoryId(updatedPerson.getProfessionCategoryId())
+                .hasAgreedToTerms(updatedPerson.getHasAgreedToTerms())
                 .build();
     }
 
@@ -42,6 +42,10 @@ public class RegisterPerson {
                 .professionCategoryId(request.getProfessionCategoryId())
                 .hasAgreedToTerms(request.getHasAgreedToTerms())
                 .build());
+
+        if (request.getPersonId() == null) {
+            errorCodes.add(UpdateRegisteredPersonErrorCode.PERSON_ID_NOT_PROVIDED);
+        }
 
         if (!errorCodes.isEmpty()) {
             throw ValidationException.of(errorCodes);
@@ -60,9 +64,13 @@ public class RegisterPerson {
     @Value
     @Builder
     public static class Request {
+        Person.Id personId;
         String name;
         Long professionCategoryId;
         Boolean hasAgreedToTerms;
     }
 
+    public enum UpdateRegisteredPersonErrorCode implements ValidationErrorCode {
+        PERSON_ID_NOT_PROVIDED,
+    }
 }
